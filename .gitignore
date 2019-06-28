@@ -23,6 +23,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore devise configuration containing Facebook APP_SECRET.
+/config/initializers/devise.rb
+
 /public/packs
 /public/packs-test
 /node_modules
