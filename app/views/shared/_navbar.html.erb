@@ -47,6 +47,52 @@
   </div>
 </nav>
 
+<% if user_signed_in? %>
+  <nav class="navbar has-shadow">
+    <div class="container">
+      <div class="navbar">
+        <%= link_to 'Dashboard', dashboard_path, class: 'navbar-item' %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Selling</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">Create New Gig</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Buying</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">Post Request</a>
+            <a class="navbar-item">Manage Requests</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Buyer Requests</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">Active Requests</a>
+            <a class="navbar-item">Offers Sent</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Orders</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">Sales</a>
+            <a class="navbar-item">Purchases</a>
+          </div>
+        </div>
+        <%= link_to 'Earnings', dashboard_path, class: 'navbar-item' %>
+        <%= link_to 'Messages', dashboard_path, class: 'navbar-item' %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Settings</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">Payment Methods</a>
+            <a class="navbar-item">Payout Methods</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+<% end %>
+
 <script>
   $(document).ready(() => {
       $('.navbar-burger').click(() => {
