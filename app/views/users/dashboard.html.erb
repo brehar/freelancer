@@ -1,2 +1,137 @@
-<h1>Users#dashboard</h1>
-<p>Find me in app/views/users/dashboard.html.erb</p>
+<section class="section">
+  <div class="conainer">
+    <div class="columns">
+      <div class="column is-one-third">
+        <div class="columns is-multiline">
+          <div class="column is-full">
+            <div class="card">
+              <div class="card-content is-horizontal-center is-flex">
+                <figure class="image is-128x128">
+                  <%= image_tag 'icon_default_avatar.png' %>
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content has-text-centered">
+                  <p class="title is-5">
+                    <%= current_user.full_name %>
+                  </p>
+                  <button class="button is-primary is-outlined is-fullwidth">Upload Avatar</button>
+                </div>
+                <hr class="h-10" />
+                <article class="media">
+                  <div class="media-content">Member Since</div>
+                  <div class="media-right">
+                    <strong><%= current_user.created_at.strftime('%B %Y') %></strong>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article>
+                  <div class="media">
+                    <div class="media-content">From</div>
+                    <div class="media-right">
+                      <strong><%= current_user.from %></strong> <i class="toggle far fa-edit" aria-controls="user-from"></i>
+                    </div>
+                  </div>
+                  <div class="content">
+                    <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: { id: 'user-from', class: 'is-hidden' } do |f| %>
+                      <div class="field">
+                        <%= f.text_field :from, value: current_user.from, autofocus: true, autocomplete: 'country-name', class: 'input' %>
+                      </div>
+                      <a class="toggle button is-light" aria-controls="user-from">Cancel</a>
+                      <%= f.submit 'Save', class: 'button is-danger' %>
+                    <% end %>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article>
+                  <div class="media">
+                    <div class="media-content">Current Status</div>
+                    <div class="media-right">
+                      <strong>
+                        <% if current_user.status %>
+                          <span style="color: #008000;">Online</span>
+                        <% else %>
+                          <span style="color: #ff0000;">Offline</span>
+                        <% end %>
+                      </strong> <i class="toggle far fa-edit" aria-controls="user-status"></i>
+                    </div>
+                  </div>
+                  <div class="content">
+                    <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: { id: 'user-status', class: 'is-hidden' } do |f| %>
+                      <div class="select is-fullwidth">
+                        <%= f.select(:status, options_for_select([['Online', true], ['Offline', false]], current_user.status)) %>
+                      </div>
+                      <a class="toggle button is-light" aria-controls="user-status">Cancel</a>
+                      <%= f.submit 'Save', class: 'button is-danger' %>
+                    <% end %>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="column is-full">
+            <div class="card">
+              <div class="card-content">
+                <article>
+                  <div class="media">
+                    <div class="media-content">
+                      <p>
+                        <strong>About Yourself</strong>
+                        <br />
+                        <%= current_user.about %>
+                      </p>
+                    </div>
+                    <div class="media-right">
+                      <i class="toggle far fa-edit" aria-controls="user-about"></i>
+                    </div>
+                  </div>
+                  <div class="content">
+                    <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: { id: 'user-about', class: 'is-hidden' } do |f| %>
+                      <div class="field">
+                        <%= f.text_area :about, value: current_user.about, autofocus: true, rows: 4, class: 'textarea' %>
+                      </div>
+                      <a class="toggle button is-light" aria-controls="user-about">Cancel</a>
+                      <%= f.submit 'Save', class: 'button is-danger' %>
+                    <% end %>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article>
+                  <div class="media">
+                    <div class="media-content">
+                      <p>
+                        <strong>Language(s)</strong>
+                        <br />
+                        <%= current_user.language %>
+                      </p>
+                    </div>
+                    <div class="media-right">
+                      <i class="toggle far fa-edit" aria-controls="user-language"></i>
+                    </div>
+                  </div>
+                  <div class="content">
+                    <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: { id: 'user-language', class: 'is-hidden' } do |f| %>
+                      <div class="field">
+                        <%= f.text_field :language, value: current_user.language, autofocus: true, class: 'input' %>
+                      </div>
+                      <a class="toggle button is-light" aria-controls="user-language">Cancel</a>
+                      <%= f.submit 'Save', class: 'button is-danger' %>
+                    <% end %>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article class="media"></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="columns is-multiline">
+          <div class="column is-one-third has-text-centered"></div>
+          <div class="column is-one-third has-text-centered"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
