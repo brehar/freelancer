@@ -1,0 +1,117 @@
+<section class="section">
+  <div class="conainer">
+    <div class="columns">
+      <div class="column is-one-third">
+        <div class="columns is-multiline">
+          <div class="column is-full">
+            <div class="card">
+              <div class="card-content is-horizontal-center is-flex">
+                <figure class="image is-128x128">
+                  <%= image_tag avatar_url(@user), class: 'is-rounded' %>
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content has-text-centered">
+                  <p class="title is-5"><%= @user.full_name %></p>
+                </div>
+                <hr class="h-10" />
+                <article class="media">
+                  <div class="media-content">Member Since</div>
+                  <div class="media-right">
+                    <strong><%= @user.created_at.strftime('%B %Y') %></strong>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article class="media">
+                  <div class="media-content">From</div>
+                  <div class="media-right">
+                    <strong><%= @user.from %></strong>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article class="media">
+                  <div class="media-content">Current Status</div>
+                  <div class="media-right">
+                    <strong>
+                      <% if @user.status %>
+                        <span style="color: #008000;">Online</span>
+                      <% else %>
+                        <span style="color: #ff0000;">Offline</span>
+                      <% end %>
+                    </strong>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="column is-full">
+            <div class="card">
+              <div class="card-content">
+                <article class="media">
+                  <div class="media-content">
+                    <p>
+                      <strong>About <%= @user.full_name %></strong>
+                      <br />
+                      <%= @user.about %>
+                    </p>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article class="media">
+                  <div class="media-content">
+                    <p>
+                      <strong>Language(s)</strong>
+                      <br />
+                      <%= @user.language %>
+                    </p>
+                  </div>
+                </article>
+                <hr class="h-10" />
+                <article class="media">
+                  <div class="content">
+                    <p>
+                      <strong>Linked Account</strong><br />
+                      <% if @user.uid %>
+                        <span class="has-text-success">Facebook Verified</span>
+                      <% else %>
+                        <span class="has-text-danger">Not Verified</span>
+                      <% end %>
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-header-title">Latest Reviews</div>
+          </div>
+          <div class="card-content">
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <%= image_tag avatar_url(@user), class: 'is-rounded' %>
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>John Smith</strong><br />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque consequuntur eos minima mollitia nam officia sequi suscipit velit voluptatum. Accusantium asperiores delectus incidunt maiores numquam qui repellat voluptas! Alias!
+                  </p>
+                  <small>31 minutes ago</small>
+                </div>
+              </div>
+              <div class="media-right">
+                <span class="star-review"><i class="fa fa-star"></i> 5.0</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
